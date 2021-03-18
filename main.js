@@ -2,22 +2,31 @@
 
 /******* Functions & event handlers *******/
 
-function changeColor() {
-  const colorChangeEls = $('.color-change');
+// VERSION 1:
+// function changeColor() {
+//   const colorChangeEls = $('.color-change');
 
-  for (const el of colorChangeEls) {
-    $(el).toggleClass('hide');
+//   for (const el of colorChangeEls) {
+//     $(el).toggleClass('red');
+//   }
+// }
+
+// VERSION 2:
+const changeColor = () => {
+  for (const el of $('.color-change')) {
+    $(el).toggleClass('red');
   }
-}
+} 
+
 
 function validateNumber(evt) {
   evt.preventDefault();
 
-  const numberInput = $('input[name="number"]');
+  const numberInput = $('#number-input'); 
   const userNum = parseInt(numberInput.val(), 10);  // typecast to num
 
   const formFeedback = $('#formFeedback');
-  if (!userNum) {
+  if (!userNum || userNum >= 10) {
     formFeedback.text('Please enter a smaller number');
   } else {
     formFeedback.text('You are good to go!');
